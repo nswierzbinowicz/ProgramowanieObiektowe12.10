@@ -122,8 +122,48 @@ public class Zestaw4 {
         System.out.println("Tablica zawiera " + res + " liczb minimalnych");
         return res;
     }
-    public static int ileUnikalnych(int[] tab){
+
+    public static int ileUnikalnych(int[] tab) {
+        int licznik = 0;
+
+        for (int i = 0; i < tab.length; i++) {
+            boolean czyUnikat = true;
+            for (int j = 0; j < i; j++) {
+                if (tab[i] == tab[j]) {
+                    czyUnikat = false;
+                    break;
+                }
+            }
+            if (czyUnikat == true) {
+                licznik++;
+            }
+        }
+        System.out.println("Liczba unikalnych liczb w tablicy: " + licznik);
     }
+    //Zadanie6
+     public static void odwrocTablice(int[] tab) {
+            int lewa = 0;
+            int prawa = tab.length - 1;
+
+            while (lewa < prawa) {
+                int temp = tab[lewa];
+                tab[lewa] = tab[prawa];
+                tab[prawa] = temp;
+
+                lewa++;
+                prawa--;
+            }
+        }
+     public static void odwrocTabliceLP(int[] tab, int lewa, int prawa) {
+                 while (lewa < prawa) {
+                     int temp = tab[lewa];
+                     tab[lewa] = tab[prawa];
+                     tab[prawa] = temp;
+
+                     lewa++;
+                     prawa--;
+                 }
+             }
     public static void main(String[] args){
         //generujTablice(5,1,10);
         //generujZakres(7,5,20);
@@ -135,6 +175,8 @@ public class Zestaw4 {
         //ileUjemnych(generujTablice(10,-10,10));
         //ileZerowych(generujTablice(10,0,2));
         //ileMaxymalnych(generujTablice(10,0,5));
-        ileMinimalnych(generujTablice(10,1,5));
+        //ileMinimalnych(generujTablice(10,1,5));
+        //odwrocTablice(generujTablice(10,1,5));
+        //odwrocTablice(generujTabliceLP(10,1,5));
     }
 }
